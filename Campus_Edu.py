@@ -10,6 +10,17 @@ import os
 import sys
 
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS2
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
 
 # Create the folder using os.mkdir
 try:
@@ -51,7 +62,7 @@ def fill_page1_and_page2(workbook, row_start, row_end):
         student_datasheet1 = current_workbook.sheets["Personal Info"]
         
         #open template 
-        sheet_template_wb = xw.Book("Images\\template.xlsx")
+        sheet_template_wb = xw.Book(resource_path("Images\\template.xlsx"))
 
         #page 1 nad 2 cha access
         template_page1 = sheet_template_wb.sheets["Page 1"]
@@ -96,7 +107,7 @@ def fill_page1_and_page2(workbook, row_start, row_end):
             prn_file_name = re.sub("[^a-zA-Z0-9 \n\\.]", ".", prn_file_name)
             
             #save kartoy  workbook
-            new_template.save(f"output\\{str(prn_file_name)}.xlsx")
+            new_template.save(resource_path(f"output\\{str(prn_file_name)}.xlsx"))
             new_template.close()
 # changed config to configure
             output_text.configure(state=tk.NORMAL)
@@ -137,7 +148,7 @@ def sem1(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET2 = CURRENT_WORKBOOK.sheets["Sem 1"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(resource_path(r"Images\\template.xlsx"))
         #page 3 cha access deto 
         TemplatePage3 = SHEET_TEMPLATE_wb.sheets["Page 3"]
 
@@ -155,7 +166,7 @@ def sem1(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET2[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx")
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx"))
             #copy kartoy new template made 
             TemplatePage3.copy(after=NEW_TEMPLATE.sheets[1])
             
@@ -249,7 +260,7 @@ def sem2(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET3[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True)
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True))
             
             #acess detoy page 3 template cha output folder madun 
             Page3 = NEW_TEMPLATE.sheets["Page 3"]
@@ -307,7 +318,7 @@ def sem3(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET4 = CURRENT_WORKBOOK.sheets["Sem 3"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(resource_path(r"Images\\template.xlsx"))
         #page 3 cha access deto 
         TemplatePage4 = SHEET_TEMPLATE_wb.sheets["Page 4"]
 
@@ -320,7 +331,7 @@ def sem3(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET4[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True)
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True))
             #copy kartoy new template made 
             TemplatePage4.copy(after=NEW_TEMPLATE.sheets[2])
             
@@ -389,7 +400,7 @@ def sem4(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET5[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True)
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True))
             
             #acess detoy page 3 template cha output folder madun 
             Page4 = NEW_TEMPLATE.sheets["Page 4"]
@@ -447,7 +458,7 @@ def sem5(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET6 = CURRENT_WORKBOOK.sheets["Sem 5"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(resource_path(r"Images\\template.xlsx"))
         #page 3 cha access deto 
         TemplatePage5 = SHEET_TEMPLATE_wb.sheets["Page 5"]
 
@@ -460,7 +471,7 @@ def sem5(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET6[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True)
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True))
             #copy kartoy new template made 
             TemplatePage5.copy(after=NEW_TEMPLATE.sheets[3])
             Page5 = NEW_TEMPLATE.sheets["Page 5"]
@@ -528,7 +539,7 @@ def sem6(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET7[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True)
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True))
             
             #acess detoy page 3 template cha output folder madun 
             Page5 = NEW_TEMPLATE.sheets["Page 5"]
@@ -585,7 +596,7 @@ def sem7(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET8 = CURRENT_WORKBOOK.sheets["Sem 7"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(resource_path(r"Images\\template.xlsx"))
         #page 3 cha access deto 
         TemplatePage6 = SHEET_TEMPLATE_wb.sheets["Page 6"]
 
@@ -598,7 +609,7 @@ def sem7(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET8[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True)
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True))
             #copy kartoy new template made 
             TemplatePage6.copy(after=NEW_TEMPLATE.sheets[4])
             Page6 = NEW_TEMPLATE.sheets["Page 6"]
@@ -664,7 +675,7 @@ def sem8(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET9[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True)
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True))
             
             #acess detoy page 3 template cha output folder madun 
             Page6 = NEW_TEMPLATE.sheets["Page 6"]
@@ -721,7 +732,7 @@ def extracurricular(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET10 = CURRENT_WORKBOOK.sheets["Extra Curricular"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(resource_path(r"Images\\template.xlsx"))
         TemplatePage7 = SHEET_TEMPLATE_wb.sheets["Page 7"]
         TemplatePage8 = SHEET_TEMPLATE_wb.sheets["Page 8"]
 
@@ -730,7 +741,7 @@ def extracurricular(workbook, row_start, row_end):
             #prn getoy data base madun 
             PRN_FILE_NAME = STUDENT_DATASHEET10[f"A{row}"].value
             #open template 
-            NEW_TEMPLATE = xw.Book(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True)
+            NEW_TEMPLATE = xw.Book(resource_path(f"output\\{str(PRN_FILE_NAME)}.xlsx", ignore_read_only_recommended=True))
             TemplatePage7.copy(after=NEW_TEMPLATE.sheets[5])
             TemplatePage8.copy(after=NEW_TEMPLATE.sheets[6])
             Page7 = NEW_TEMPLATE.sheets["Page 7"]
@@ -795,7 +806,7 @@ def process_selected_option(file_path_var):
 
 # logo chya bajucha text ahe (title of the GUI window)
 root.title("SIES GST - Campus Edu Track")
-root.iconbitmap('Images\\logo.ico')
+root.iconbitmap(resource_path('Images\\logo.ico'))
 
 
 # Custom Fonts
@@ -838,7 +849,7 @@ title_label = ttk.Label(root, text="SIES GST - Campus Edu Track", style="Title.T
 title_label.pack(pady=(20, 0))
 
 # Load and display logo
-logo_image = Image.open("Images\\internalLogo.jpeg") 
+logo_image = Image.open(resource_path("Images\\internalLogo.jpeg"))
 logo_image = logo_image.resize((100, 100))  # Resize the image
 logo_photo = ImageTk.PhotoImage(logo_image)
 logo_label = ttk.Label(root, image=logo_photo)
