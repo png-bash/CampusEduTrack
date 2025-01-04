@@ -51,7 +51,7 @@ def fill_page1_and_page2(workbook, row_start, row_end):
         student_datasheet1 = current_workbook.sheets["Personal Info"]
         
         #open template 
-        sheet_template_wb = xw.Book("template.xlsx")
+        sheet_template_wb = xw.Book("Images\\template.xlsx")
 
         #page 1 nad 2 cha access
         template_page1 = sheet_template_wb.sheets["Page 1"]
@@ -137,7 +137,7 @@ def sem1(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET2 = CURRENT_WORKBOOK.sheets["Sem 1"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
         #page 3 cha access deto 
         TemplatePage3 = SHEET_TEMPLATE_wb.sheets["Page 3"]
 
@@ -307,7 +307,7 @@ def sem3(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET4 = CURRENT_WORKBOOK.sheets["Sem 3"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
         #page 3 cha access deto 
         TemplatePage4 = SHEET_TEMPLATE_wb.sheets["Page 4"]
 
@@ -447,7 +447,7 @@ def sem5(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET6 = CURRENT_WORKBOOK.sheets["Sem 5"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
         #page 3 cha access deto 
         TemplatePage5 = SHEET_TEMPLATE_wb.sheets["Page 5"]
 
@@ -585,7 +585,7 @@ def sem7(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET8 = CURRENT_WORKBOOK.sheets["Sem 7"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
         #page 3 cha access deto 
         TemplatePage6 = SHEET_TEMPLATE_wb.sheets["Page 6"]
 
@@ -721,7 +721,7 @@ def extracurricular(workbook, row_start, row_end):
         #sem data cha acess 
         STUDENT_DATASHEET10 = CURRENT_WORKBOOK.sheets["Extra Curricular"]
         #template open 
-        SHEET_TEMPLATE_wb = xw.Book(r"template.xlsx")
+        SHEET_TEMPLATE_wb = xw.Book(r"Images\\template.xlsx")
         TemplatePage7 = SHEET_TEMPLATE_wb.sheets["Page 7"]
         TemplatePage8 = SHEET_TEMPLATE_wb.sheets["Page 8"]
 
@@ -795,7 +795,7 @@ def process_selected_option(file_path_var):
 
 # logo chya bajucha text ahe (title of the GUI window)
 root.title("SIES GST - Campus Edu Track")
-root.iconbitmap('logo.ico')
+root.iconbitmap('Images\\logo.ico')
 
 
 # Custom Fonts
@@ -838,7 +838,7 @@ title_label = ttk.Label(root, text="SIES GST - Campus Edu Track", style="Title.T
 title_label.pack(pady=(20, 0))
 
 # Load and display logo
-logo_image = Image.open("internal logo.jpeg") 
+logo_image = Image.open("Images\\internalLogo.jpeg") 
 logo_image = logo_image.resize((100, 100))  # Resize the image
 logo_photo = ImageTk.PhotoImage(logo_image)
 logo_label = ttk.Label(root, image=logo_photo)
